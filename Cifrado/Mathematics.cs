@@ -3,8 +3,9 @@
 public static class Mathematics{
   private static List<string> previousCipheredWords = new List<string>();
   private static bool input = true;
-  private static List<char> abecedario = new List<char>{    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm','n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+  private static List<char> abecedario = new List<char>{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm','n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '1'};
   private static List<char> abecedarioMayus = new List<char>{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+  private static List<char> numeros = new List<char>{'1', '2', '3', '4', '5', '6', '7', '8', '9'};
 
 
   ///Aca es el Cifrado Automatico
@@ -32,6 +33,10 @@ public static class Mathematics{
       }else if (wchar >= 'A' && wchar <= 'Z'){
         int index = (abecedarioMayus.IndexOf(wchar) + displacement) % 26;
         char yes = abecedarioMayus[index];
+        encryptedword += yes;
+      }else if(wchar >= '1' && wchar <= '9'){
+        int index = (numeros.IndexOf(wchar) + displacement) % 9;
+        char yes = numeros[index];
         encryptedword += yes;
       }else{
         encryptedword += wchar; // Si no es una letra del abecedario, mantenerla sin cambios
@@ -66,6 +71,13 @@ public static class Mathematics{
             }
             char yes = abecedarioMayus[index];
             word += yes;
+          }else if(wchar >= '1' && wchar <= '9'){
+            int index = (numeros.IndexOf(wchar) - displacement) % 9;
+            if(index < 0){
+              index += 9;
+            }
+          char yes = numeros[index];
+          word += yes;
           }else{
             word += wchar; // Si no es una letra del abecedario, mantenerla sin cambios
           }
@@ -105,6 +117,10 @@ public static class Mathematics{
       }else if (wchar >= 'A' && wchar <= 'Z'){
         int index = (abecedarioMayus.IndexOf(wchar) + displacement) % 26;
         char yes = abecedarioMayus[index];
+        encryptedword += yes;
+      }else if(wchar >= '1' && wchar <= '9'){
+        int index = (numeros.IndexOf(wchar) + displacement) % 9;
+        char yes = numeros[index];
         encryptedword += yes;
       }else{
         encryptedword += wchar; // Si no es una letra del abecedario, mantenerla sin cambios
@@ -147,6 +163,13 @@ public static class Mathematics{
             index += 26;
           }
           char yes = abecedarioMayus[index];
+          word += yes;
+        }else if(wchar >= '1' && wchar <= '9'){
+          int index = (numeros.IndexOf(wchar) - displacement) % 9;
+          if(index < 0){
+            index += 9;
+          }
+          char yes = numeros[index];
           word += yes;
         }else{
           word += wchar; // Si no es una letra del abecedario, mantenerla sin cambios

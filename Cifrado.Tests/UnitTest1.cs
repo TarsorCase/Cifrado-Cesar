@@ -93,4 +93,59 @@ public class UnitTest1
    // Assert
    Assert.NotEqual(expectedResult, result);
    }
+
+   [Fact]
+   public void CifradoTestNum()
+   {
+   // Arrange
+   string phrase = "Hola Mundo123";
+   int displacement = 4;
+   string expectedResult = "Lspe Qyrhs567";
+   // Act
+   var result = Mathematics.Cifrado(phrase, displacement);
+   // Assert
+   Assert.Equal(expectedResult, result);
+   }
+  
+   [Fact]
+   public void DecifradoTestNum()
+   {
+   // Arrange
+   string phrase = "Lspe Qyrhs567";
+   int displacement = 4;
+   string expectedResult = "Hola Mundo123";
+   // Act
+   var result = Mathematics.Decifrado(phrase, displacement);
+   // Assert
+   Assert.Equal(expectedResult, result);
+   }
+
+
+   [Fact]
+   public void CifradoAutoTestNum()
+   {
+   // Arrange
+   string phrase = "HolaMundo456";
+   int displacement = 6;
+   string expectedResult = "NurgSatju123";
+   // Act
+   var result = Mathematics.CifradoAuto(phrase, displacement);
+   // Assert
+   Assert.Equal(expectedResult, result);
+   }
+
+
+   [Fact]
+   public void DecifradoAutoTestNum()
+   {
+   // Arrange
+   // Simulamos que ya se han realizado cifrados antes
+   Mathematics.CifradoAuto("Hola Mundo123", 3);
+   int displacement = 3;
+   string expectedResult = "Hola Mundo123";
+   // Act
+   var result = Mathematics.DecifradoAuto(displacement);
+   // Assert
+   Assert.Equal(expectedResult, result);
+   }
 }
